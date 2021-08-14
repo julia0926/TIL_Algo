@@ -18,10 +18,10 @@ def dfs(x, y, k):
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-final = 0 
+final = 0
 
 for k in range(max(map(max, arr))): #arr배열 전체 중 최대값 만큼 반복 
-    count = 0
+    count = 0 
     visited = [[False] * N for _ in range(N)] #방문여부를 위한 배열 - False로 초기화
     for i in range(N):
         for j in range(N):
@@ -29,6 +29,7 @@ for k in range(max(map(max, arr))): #arr배열 전체 중 최대값 만큼 반�
                 dfs(i, j, k)
                 count += 1
     final = max(final, count)
-    #print(k)
+    print(k)
 
 print(final)
+
