@@ -14,7 +14,7 @@ def solution(scoville, k):
         answer += 1
     return answer
 
-# -------- 테스트는 통과, 시간초과
+# -------- 성공
 # def solution(scoville, k):
 #     heapq.heapify(scoville) #이미 리스트가 있으면 즉각 힙으로 변환됨
 #     answer = 0
@@ -22,7 +22,6 @@ def solution(scoville, k):
 #         if len(scoville) == 1: return -1
 #         mix = heapq.heappop(scoville) + (heapq.heappop(scoville) * 2) # heappop : 제일 작은 값 팝하고 반환
 #         heapq.heappush(scoville, mix)
-#         scoville.sort()
 #         answer += 1
 #     return answer
 
