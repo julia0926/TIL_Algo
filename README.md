@@ -17,3 +17,15 @@ str = "one23four"
 str = str.replace("one","1") 
 print(int(str))  #123four
 ```
+### bisect_left
+bisect.bisect_left(a, x, lo=0, hi=len(a), *, key=None) <br>
+정렬된 a에 x를 삽입할 위치를 리턴해준다. x가 a에 이미 있으면 기존 항목의 앞 (왼쪽)의 위치를 반환
+(bisect_right라면 오른쪽에)<br>
+```python
+from bisect import bisect_right, bisect_left
+
+a = [1,2,3,4,4,8]
+x = 4
+print(bisect_left(a,x)) #3
+print(bisect_right(a,x)) #5
+```
