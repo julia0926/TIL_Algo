@@ -29,3 +29,12 @@ x = 4
 print(bisect_left(a,x)) #3
 print(bisect_right(a,x)) #5
 ```
+### math.pow(), math.sqrt()
+- math.pow(x,y) -> return float : x의 거듭 제곱 (x의 y승)을 반환 <br>
+```python
+math.pow(2, 4) #16
+```
+- math.sqrt(x) -> return float : x의 제곱근 반환(x에 루트 씌운 값) <br>
+```python
+math.pow(121) #11
+```
