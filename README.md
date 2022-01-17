@@ -38,3 +38,11 @@ math.pow(2, 4) #16
 ```python
 math.pow(121) #11
 ```
+### pass, continue, slicing
+- pass : 단순히 실행할 코드가 없을 때 사용 <br>
+- continue : 하위 문장 실행 안하고 바로 다음 반복문 동작 <br>
+- slicing : 문자열이나 배열을 부분 자를 때 (ex: [:3] 앞 3개 자름, [2:] 뒤에 2개 자름, [1:3] 2~3까지)
+### find()
+string.find(찾을 문자, 시작 Index, 끝 Index) - 시작과 끝 인덱스 생략 가능 <br>
+찾는 문자나 문자열이 존재하면 해당 위치 index 반환, 존재 안하면 -1<br>
+"adsaad" 문자열 중 d의 위치를 리턴해야 한다면 제일 앞부분인 1 리턴
