@@ -46,3 +46,13 @@ math.pow(121) #11
 string.find(찾을 문자, 시작 Index, 끝 Index) - 시작과 끝 인덱스 생략 가능 <br>
 찾는 문자나 문자열이 존재하면 해당 위치 index 반환, 존재 안하면 -1<br>
 - "adsaad" 문자열 중 d의 위치를 리턴해야 한다면 제일 앞부분인 1 리턴
+### 숫자의 자릿수와 각 값 리스트에 넣기
+```python
+n = 123
+num_n = len(123) #3이 리턴 
+```
+```python
+for i in range(1, n):
+    num_i = list(map(int, str(i))) 
+print(num_i) #[1,2,3] 출력
+```
