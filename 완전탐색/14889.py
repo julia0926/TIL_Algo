@@ -1,3 +1,7 @@
+#백준 - 스타트와 링크 : https://www.acmicpc.net/problem/14889
+#시도 : 예제 1번 입력의 코드는 성공했으나, 길이별로 늘어나는 값을 구현해내지 못함. 그래서 참고함. 
+
+
 from itertools import combinations
 from math import comb
 # combi : [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
