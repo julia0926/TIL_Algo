@@ -56,3 +56,7 @@ for i in range(1, n):
     num_i = list(map(int, str(i))) 
 print(num_i) #[1,2,3] 출력
 ```
+### 10진수 -> 2진수
+```python
+print(format(10, 'b')) #1010
+```
