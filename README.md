@@ -66,3 +66,16 @@ print(format(10, 'b')) #1010
 res = [1,2,3,4] 
 print(*res) #1 2 3 4
 ```
+### 숫자 각 자리수를 배열로 넣기
+```python
+for i in range(110, 115):
+    num_list = list(map(int, str(i))) 
+    print(num_list)
+''' 
+[1, 1, 0]
+[1, 1, 1]
+[1, 1, 2]
+[1, 1, 3]
+[1, 1, 4]
+'''
+```
