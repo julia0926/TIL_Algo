@@ -1,3 +1,5 @@
+# 실버 2 : https://www.acmicpc.net/problem/15650
+
 from itertools import combinations
 
 n, m = map(int, input().split())
