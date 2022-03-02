@@ -1,3 +1,5 @@
+#실버2 섬의 개수 - https://www.acmicpc.net/problem/4963
+
 from collections import deque
 
 dx = [-1, 1, 0, 0, -1, 1, -1, 1]
