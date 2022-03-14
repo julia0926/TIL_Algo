@@ -79,3 +79,9 @@ for i in range(110, 115):
 [1, 1, 4]
 '''
 ```
+### DFS RecursionError 발생시
+- 깊이의 제한을 두면 해결
+```python
+import sys
+sys.setrecursionlimit(10000)
+```
