@@ -1,3 +1,5 @@
+#실버 1 : 트리순회 - https://www.acmicpc.net/problem/1991
+
 N = int(input())
         
 tree = {}

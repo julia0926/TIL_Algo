@@ -12,7 +12,6 @@ def solution(progresses, speeds):
                 speeds.pop(0)
                 result += 1
             answer.append(result)
-    return answer
-
+    return 
 print(solution([93, 30, 55],[1, 30, 5]))
 # print(solution([95, 90, 99, 99, 80, 99],[1, 1, 1, 1, 1, 1]))

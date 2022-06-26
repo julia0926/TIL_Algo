@@ -4,7 +4,7 @@
 n, m = map(int, input().split())
 result = []
 
-def dfs(depth):
+def dfs(depth):df
     if depth == m:
         print(*result)
         return
@@ -14,4 +14,5 @@ def dfs(depth):
         result.pop()
 
 
+dfs(0)
 dfs(0)

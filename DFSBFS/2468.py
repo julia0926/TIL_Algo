@@ -21,7 +21,7 @@ max_val = max(map(max, area))
 
 answer = []
 #최소 값 이하도 생각해야 하는 이유는, 어쨌든 그것도 모든 칸이 안전영역이기 때문에 1개라고 침
-#만약 최대 값이 1이라면 1개로도 정해 줘야 함 !? 나의 피셜 
+#만약 최대 값이 1이라면 1개로도 정해 줘야 함 !?
 for k in range(max_val+1):
     visited = list([False for _ in range(N)] for _ in range(N))
     count = 0

@@ -8,15 +8,23 @@ import heapq as hq
 '''
 
 def solution(jobs):
-    jobs.sort(key=lambda x: x[1])
-    result = []
-    end_time = 0
-    for start, during in jobs:
-        x = abs(start - end_time) + during
-        #print("endTime" , end_time)
-        end_time = x + start
-        result.append(x)
-    return sum(result) // len(jobs)
-
-
-print(solution([[0, 3], [1, 9], [2, 6]]))
+    answer, start = 0, 0
+    jobs.sort(key=lambda x: x[1]) #소요시간 순으로 정렬
+    length = len(jobs)
+    while len(jobs) != 0:
+        for i in range(len(jobs)):
+            if jobs[i][0] <= start:
+                start += jobs[i][1] #시작 시간 업데이트
+                answer += start - jobs[i][0]
+                print("start, answer", answer, start)
+                jobs.pop(i)
+                print(jobs)
+                break
+            if i == len(jobs) -1:
+                start += 1
+    return answer // length
+    
+    
+#print(solution([[0, 3], [1, 9], [2, 6]]))
+print(solution([[0, 5], [2, 10], [10000, 2]])) #6
+#[[10000, 2], [0, 5], [2, 10]]

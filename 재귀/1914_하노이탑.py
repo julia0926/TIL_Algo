@@ -1,4 +1,4 @@
-# 실버 2: 하노이탑 https://www.acmicpc.net/problem/1914
+#실버2 하노이탑 - https://www.acmicpc.net/problem/1914
 
 n = int(input())
 onepan = [i for i in range(3)]
