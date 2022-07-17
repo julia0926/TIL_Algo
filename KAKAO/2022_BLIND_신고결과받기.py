@@ -9,6 +9,7 @@ def solution(id_list, report, k):
         reporter_dic[reported].append(reporter)
 
     for key, value in reporter_dic.items():
+        print(key, len(value))
         if len(value) >= k:
             for j in value:
                 result[id_list.index(j)] += 1
@@ -16,5 +17,5 @@ def solution(id_list, report, k):
 
    
 
-solution(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2)
+print(solution(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2))
 solution(["con", "ryan"], ["ryan con", "ryan con", "ryan con", "ryan con"], 3)
