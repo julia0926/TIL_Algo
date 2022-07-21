@@ -1,6 +1,20 @@
+
+
+def get_distance(now_loc, next_loc):
+    pad = {1: [0, 0], 2: [1, 0], 3: [2, 0],
+              4: [0, 1], 5: [1, 1], 6: [2, 1],
+              7: [0, 2], 8: [1, 2], 9: [2, 2],
+              "*": [0, 3], 0: [1, 3], "#": [2, 3], }
+
+    x1, y1 = pad[now_loc]
+    x2, y2 = pad[next_loc]
+    return abs(x1-x2) + abs(y1-y2)
+
 def solution(numbers, hand):
+    #키패드 위치
     answer = ""
-    left_loc, right_loc = 10, 12
+    left_loc, right_loc = "*", "#"
+   
     for number in numbers:
         if number in [1, 4, 7]:
             answer += "L"
@@ -9,17 +23,15 @@ def solution(numbers, hand):
             answer += "R"
             right_loc = number
         else:
-            if number == 0:
-                number = 11 #0은 11번째로 처리 
-            left_dist = abs(number - left_loc)
-            right_dist = abs(number - right_loc)
-            if left_dist // 3 + left_dist % 3 > right_dist // 3 + right_dist % 3: #왼쪽이 더 가까우면 
-                answer += "R"
-                right_loc = number
-            elif left_dist // 3 + left_dist % 3 < right_dist // 3 + right_dist % 3:
+            left_dis = get_distance(left_loc, number) 
+            right_dis = get_distance(right_loc, number) 
+            if left_dis < right_dis: #왼쪽이 더 가깝다
                 answer += "L"
                 left_loc = number
-            elif left_dist // 3 + left_dist % 3 == right_dist // 3 + right_dist % 3:
+            elif left_dis > right_dis: #오른쪽이 더 가깝다
+                answer += "R"
+                right_loc = number
+            else:
                 if hand == "left":
                     answer += "L"
                     left_loc = number
