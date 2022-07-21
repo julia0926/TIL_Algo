@@ -1,31 +1,22 @@
-
-from collections import deque
+#https://school.programmers.co.kr/learn/courses/30/lessons/64061
 
 def solution(board, moves):
-    new_board = list(map(deque, zip(*board))) #가로 -> 세로 변경
+    bucket = []
+    answer = 0
 
-    for i in new_board:
-        if 0 in i:
-            while 0 in i:
-                i.remove(0)
-    result_list = []
-    answer = []
-    print(new_board)
-    for item in moves:
-        #print(new_board[item-1])
-        if new_board[item-1]: #들어있으면, 비어있지 않으면
-            #넣기 전에 비교 ,,
-            pop_value = new_board[item-1].popleft()
-            if result_list[-1] == pop_value:
-                while result_list[-1] == pop_value:
-                    new_board[item-1].popleft()
-                    answer.append(pop_value)
-            else:
-                result_list.append(pop_value)
-            
+    for i in moves: #행
+        for j in range(len(board)): #열
+            #행열 바꿔서 접근 
+            if board[j][i-1] != 0: 
+                bucket.append(board[j][i-1]) #바구니에 값 집어넣음
+                board[j][i-1] = 0 #버켓에 집어넣었으니 0 처리
+                # 바구니에 값이 2개 이상 있고, 끝에 2개가 같으면 
+                if len(bucket) > 1 and bucket[-2] == bucket[-1]:
+                    bucket.pop(-1)
+                    bucket.pop(-1)
+                    answer += 2
+                break
     return answer
-        
-    
-    
+
 
 print(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]	))
