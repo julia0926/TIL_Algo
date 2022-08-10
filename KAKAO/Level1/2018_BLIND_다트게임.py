@@ -29,9 +29,29 @@ def solution(dartResult):
 
     return sum(result)
 
-solution("1D2S#10S")
-solution("1S2D*3T")
-solution("1D#2S*3S")
-solution("1S*2T*3S")
-solution("1D2S3T*")
-solution("1D2S0T")
+# 참고 다른 풀이
+def solution2(dartResult):
+    scores = []
+    dart = {'S': 1, 'D':2, 'T':3 }
+    n = 0
+
+    for idx, value in enumerate(dartResult):
+        if value in dart:
+            print(dartResult[n:idx])
+            scores.append(int(dartResult[n:idx])**dart[value])
+        if value == "*":
+            #처음부터 -2까지 
+            scores[-2:] = [x*2 for x in scores[-2:]]
+        if value == "#":
+            scores[-1] = -1 * scores[-1]
+        if not isdigit(value):
+            n = idx + 1
+
+    return sum(scores)
+
+solution2("1D2S#10S")
+# solution("1S2D*3T")
+# solution("1D#2S*3S")
+# solution("1S*2T*3S")
+# solution("1D2S3T*")
+# solution("1D2S0T")
