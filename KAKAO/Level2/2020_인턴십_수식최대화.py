@@ -1,48 +1,36 @@
+from collections import deque
 from itertools import permutations
-from math import perm
 import re
 
-def calculate(v1, v2, op):
-    v1, v2 = int(v1), int(v2)
-    if op == "*":
-        return str(v1 * v2)
-    elif op == "+":
-        return str(v1 + v2)
-    else:
-        return str(v1 - v2)
-
-def change(op_list, expression):
-    input_op = re.split('[0-9]+', expression)[1:]
-    input_val = re.split('[-+*]', expression)
-    new_op_list, new_val_list = [], []
-    for op in op_list: #연산자 리스트 3개 중 하나씩 
-        #입력된 연산자 리스트에 해당 연산자가 있을때까지
-        print("기준 !! ", op, op_list)
-        
-        while len(input_op) == 0:
-            print("비면 종료", len(input_op))
-            piv_op = input_op.pop(0)
-            print(piv_op, input_val, input_op)
-            if piv_op == op: #같으면 그 값 두개뽑고 연산자 하나 뽑아서 계산
-                v1 = input_val.pop(0)
-                v2 = input_val.pop(0)
-                new_val_list.append(calculate(v1, v2, piv_op))
-                print("계산됨 !")
-            else: #다르다면 연산자 값 pop
-                new_val_list.append(input_val.pop(0))
-                new_op_list.append(piv_op)
-        new_val_list.append(input_val.pop(0))
-        input_op = new_op_list
-        input_val = new_val_list
+def split_ex(expression):
+    op_list = re.split('[0-9]+', expression)[1:]
+    val_list = re.split('[*+-]', expression)
+    piv_list = []
+    for i in range(len(val_list)):
+        piv_list.append(val_list[i]) 
+        piv_list.append(op_list[i])
     
-    print("마지막", new_val_list)
+    return deque(piv_list[:-1])
+
+def make_result(priority, expression):
+    arr = split_ex(expression)
+    for op in priority:
+        tmp_list = []
+        while arr:
+            tmp = arr.popleft()
+            if tmp == op: #연산자이면서 기준연산자랑 같으면
+                result = str(eval(tmp_list.pop()+op+arr.popleft())) #연산자의 왼쪽값과 남아있는 배열의 값을 연산
+                tmp_list.append(result) #마지막에 연산한 값을 추가
+            else:
+                tmp_list.append(tmp) #꺼낸값 그대로 넣음
+        arr = deque(tmp_list)
+    return int(arr.pop())
 
 def solution(expression):
     permut_op = list(permutations("+-*", 3))
-    for op in permut_op:
-        change(op, expression)
-
     answer = 0
+    for op in permut_op:
+        answer = max(answer, abs(make_result(op, expression)))
     return answer
 
-solution("100-200*300-500+20")
+print(solution("100-200*300-500+20"))
