@@ -6,7 +6,7 @@ def solution(bridge_length, weight, truck_weights):
     secend = 0
     truck_weights = deque(truck_weights)
     cross = deque([0] * bridge_length) #다리에 있는 트럭 
-
+    print(cross)
     while cross: #다리에 있는동안 
         secend += 1
         cross.popleft()
