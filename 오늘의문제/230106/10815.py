@@ -6,6 +6,7 @@ m = int(input())
 piv_card = list(map(int, input().split()))
 
 result = []
+result2 = []
 
 def search(target):
     left, right = 0, len(card)-1
@@ -19,7 +20,18 @@ def search(target):
             return 1
     return 0
 
+#이진탐색 모듈 사용 
+from bisect import bisect_left
+def module_insect(target):
+    idx = bisect_left(card, target)
+    if idx < len(card) and card[idx] == target:
+        return 1
+    return 0
+
+
 for piv in piv_card:
     result.append(search(piv))
+    result2.append(module_insect(piv))
 
-print(*result)
+# print(*result)
+print(*result2)
