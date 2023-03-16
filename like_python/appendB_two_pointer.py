@@ -1,4 +1,4 @@
-# p.472 투포인터 
+# p.472  
 
 from itertools import count
 

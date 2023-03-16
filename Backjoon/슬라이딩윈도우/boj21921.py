@@ -15,6 +15,7 @@ else:
     for i in range(1, n):
         dp[i] = dp[i-1] + arr[i]
     visitor = [dp[x-1]]
+    
     for i in range(x, n):
         visitor.append(dp[i] - dp[i-x])
     max_visitor = max(visitor)
