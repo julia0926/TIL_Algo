@@ -1,8 +1,8 @@
-
-self_num = []
-for i in range(1, 10001):
-    self_num.append((sum(list(map(int, str(i)))) + i))
+is_self = [False] * 20001
 
 for i in range(1, 10001):
-    if i not in self_num:
+    is_self[i+sum(int(c) for c in str(i))] = True
+
+for i in range(1, 10001):
+    if not is_self[i]:
         print(i)
