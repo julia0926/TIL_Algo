@@ -1,15 +1,19 @@
 from itertools import combinations
 
-n, m = map(int, input().split())
+pick, total = map(int, input().split())
 arr = sorted(list(input().split()))
-vowels = ['a','e','i','o','u']
+
+word_list = []
 result = []
 
-for c in combinations(sorted(arr), n):
-    result.append(''.join(c))
 
-#1개 모음, 2개 자음 거르기
-for res in result:
-    cnt = sum(res.count(v) for v in vowels)
-    if cnt >= 1 and n - cnt >= 2:
-        print(res)
+def check(word):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowel_count = sum(1 for char in word if char in vowels)
+    const_count = len(word) - vowel_count
+    return vowel_count >= 1 and const_count >= 2
+
+
+for combi in list(combinations(arr, pick)):
+    if check(combi):
+        print(''.join(combi))
