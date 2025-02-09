@@ -1,28 +1,16 @@
 from collections import deque
 
 def solution(priorities, location):
-    dic = dict() #key=location, value=priority
-    dq_pri = deque()
-    loc_alpha = '' #찾아야할 알파벳 위치
-    progress_process = [] # 실행 프로세스
+    dq = deque()
+    answer = 0
     for (idx, val) in enumerate(priorities):
-        alpha = chr(65+idx)
-        dic[alpha] = val 
-        dq_pri.append(alpha)
-        if location == idx:
-            loc_alpha = alpha
+        dq.append((idx, val))
     
-    while dq_pri:
-        val = dq_pri.popleft() #1. 대기큐에서 하나 꺼낸다.
-        is_progress = True
-        # 2. 우선순위가 더 높은 프로세스가 있느지 비교
-        for dqv in list(dq_pri):
-            if dic[dqv] > dic[val]: #우선순위가 더 높은 프로세스가 있다면 
-                dq_pri.append(val) #다시 큐에 넣는다.
-                is_progress = False
-                break
-        if is_progress:
-            progress_process.append(val) #실행
-    
-    answer = progress_process.index(loc_alpha)+1
-    return answer
+    while True:
+        val = dq.popleft()
+        if any(val[1] < dqv[1] for dqv in dq): #dq의 값을 하나씪 돌면서 작은 값이 하나라도 있는지 체크 any 써서..
+            dq.append(val)
+        else:
+            answer += 1 #없으면 실행중인 순서가 늘으니까 +1
+            if val[0] == location: #찾으려는 위치 값을 찾으면
+                return answer  # 바로 순서를 리턴한다.
