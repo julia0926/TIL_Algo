@@ -1,15 +1,17 @@
-from itertools import permutations
+from collections import Counter
 
-input = input()
-all_cases = set([''.join(p) for p in permutations(list(input), len(input))])
-def is_lucky(s):
-    temp = ''
-    for char in s:
-        if char != temp:
-            temp = char
-            continue
-        else:
-            return False
-    return True
+def back_tracking(length, prev_char):
+    answer = 0
+    if length == len(st):
+        return 1
+    for char in counter:
+        if counter[char] > 0 and char != prev_char:
+            counter[char] -= 1
+            answer += back_tracking(length+1, char)
+            counter[char] += 1
+    return answer
 
-print(len(list(filter(is_lucky, all_cases))))
+st = input()
+counter = Counter(st)
+print(back_tracking(0, ''))
+
