@@ -1,24 +1,26 @@
-import sys
-input = sys.stdin.readline
 from collections import deque
 
-n, m = map(int, input().rstrip().split())
-graph = list(list(map(int, input().rstrip())) for _ in range(n))
-dq = deque()
-visited = [[False] * m for _ in range(n)]
-def bfs(x, y):
-    dq.append((x, y))
-    visited[x][y] = True
-    while dq:
-        dx, dy = dq.popleft()
-        for dirx, diry in [(0,1),(0,-1),(1,0),(-1,0)]:
-            nx = dirx + dx
-            ny = diry + dy
-            if 0<=nx<n and 0<=ny<m and graph[nx][ny] == 1 and not visited[nx][ny]:
-                visited[nx][ny] = True
-                graph[nx][ny] = graph[dx][dy] + 1
-                dq.append((nx, ny))
-    return graph[n-1][m-1]
+n, m = map(int, input().split())
+graph = [list(map(int, input())) for _ in range(n)]
 
-res = bfs(0, 0)
-print(res)
+def bfs(x, y):
+    dq = deque()
+    dq.append((x, y))
+
+    while dq:
+        a, b = dq.popleft()
+        for dx, dy in [(0, 1), (1, 0 ), (-1, 0), (0, -1)]:
+            nx = a + dx
+            ny = b + dy
+            if 0<=nx<n and 0<=ny<m and graph[nx][ny] == 1:
+                graph[nx][ny] = graph[a][b] + 1
+                dq.append((nx, ny))
+                
+
+
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] == 1:
+            bfs(i, j)
+
+print(graph[n-1][m-1])
